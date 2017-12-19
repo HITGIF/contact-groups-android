@@ -2,6 +2,7 @@ package com.community.jboss.contactgroups.data.entities;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.UUID;
 
@@ -12,19 +13,15 @@ import java.util.UUID;
 @Entity
 public class Group {
 
-    @PrimaryKey
-    private final String uid;
+    @PrimaryKey @NonNull
+    private String uid;
     private String name;
-
-    public Group() {
-        this(null);
-    }
 
     public Group(String name) {
         this(name, UUID.randomUUID().toString());
     }
 
-    private Group(String name, String uid) {
+    private Group(String name, @NonNull String uid) {
         this.name = name;
         this.uid = uid;
     }
@@ -37,7 +34,13 @@ public class Group {
         this.name = name;
     }
 
+    @NonNull
     public String getUid() {
         return uid;
+    }
+
+    @NonNull
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

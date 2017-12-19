@@ -26,6 +26,6 @@ public interface ContactNumberDAO {
     @Query("SELECT * FROM contactnumber WHERE number = :number")
     ContactNumber getContactNumber(String number);
 
-    @Query("SELECT * FROM contactnumber WHERE contactId = :contactId")
-    List<ContactNumber> getContactNumberList(String contactId);
+    @Query("SELECT * FROM contactnumber WHERE contactID = :contactID")
+    List<ContactNumber> getContactNumberList(String contactID);
 }

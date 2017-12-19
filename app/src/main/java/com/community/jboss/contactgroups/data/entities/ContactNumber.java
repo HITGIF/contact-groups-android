@@ -2,7 +2,9 @@ package com.community.jboss.contactgroups.data.entities;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.UUID;
 
@@ -10,50 +12,57 @@ import java.util.UUID;
  * Created by carbonyl on 17-12-19.
  */
 
-@Entity(primaryKeys = {"contactId", "groupId"},
-        foreignKeys = {
-        @ForeignKey(entity = Contact.class, parentColumns = "uid", childColumns = "contactId"),
-        @ForeignKey(entity = Group.class, parentColumns = "uid", childColumns = "groupId"),
-})
+@Entity(foreignKeys = @ForeignKey(
+        entity = Contact.class,
+        parentColumns = "uid",
+        childColumns = "contactID",
+        onDelete = ForeignKey.CASCADE
+))
 public class ContactNumber {
 
     @PrimaryKey
-    private final String uid;
-    private int number;
-    private Contact contact;
+    @NonNull
+    private String uid;
+    @NonNull
+    private String number;
+    @NonNull
+    private String contactID;
 
-    public ContactNumber() {
-        this(-1, null);
+    @Ignore
+    public ContactNumber(String number, String contactID) {
+        this(number, contactID, UUID.randomUUID().toString());
     }
 
-    public ContactNumber(int number, Contact contact) {
-        this(number, contact, UUID.randomUUID().toString());
-    }
-
-    private ContactNumber(int number, Contact contact, String uid) {
+    public ContactNumber(@NonNull String number,@NonNull String contactID,@NonNull String uid) {
         this.number = number;
-        this.contact = contact;
+        this.contactID = contactID;
         this.uid = uid;
     }
 
-    public int getNumber() {
+    @NonNull
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(@NonNull String number) {
         this.number = number;
     }
 
-    public Contact getContact() {
-        return contact;
+    @NonNull
+    public String getContactID() {
+        return contactID;
     }
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
+    @NonNull
     public String getUid() {
         return uid;
     }
 
+    public void setUid(@NonNull String uid) {
+        this.uid = uid;
+    }
+
+    public void setContactID(String contactID) {
+        this.contactID = contactID;
+    }
 }
