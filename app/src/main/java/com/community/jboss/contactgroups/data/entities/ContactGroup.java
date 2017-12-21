@@ -9,40 +9,40 @@ import android.support.annotation.NonNull;
  * Created by carbonyl on 17-12-19.
  */
 
-@Entity(primaryKeys = {"contactID", "groupID"},
+@Entity(primaryKeys = {"contactId", "groupId"},
         foreignKeys = {
-                @ForeignKey(entity = Contact.class, parentColumns = "uid", childColumns = "contactID"),
-                @ForeignKey(entity = Group.class, parentColumns = "uid", childColumns = "groupID"),
+                @ForeignKey(entity = Contact.class, parentColumns = "uid", childColumns = "contactId"),
+                @ForeignKey(entity = Group.class, parentColumns = "uid", childColumns = "groupId"),
         })
 public class ContactGroup {
 
     @NonNull
-    private String contactID;
+    private String contactId;
     @NonNull
-    private String groupID;
+    private String groupId;
 
-    public ContactGroup(@NonNull String contactID,@NonNull String groupID) {
-        this.contactID = contactID;
-        this.groupID = groupID;
+    public ContactGroup(@NonNull String contactId,@NonNull String groupId) {
+        this.contactId = contactId;
+        this.groupId = groupId;
     }
 
     @NonNull
-    public String getGroupID() {
-        return groupID;
+    public String getGroupId() {
+        return groupId;
     }
 
     @NonNull
-    public String getContactID() {
-        return contactID;
+    public String getContactId() {
+        return contactId;
     }
 
     @NonNull
-    public void setContactID(String contactID) {
-        this.contactID = contactID;
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
     }
 
     @NonNull
-    public void setGroupID(String groupID) {
-        this.groupID = groupID;
+    public void setGroupID(String groupId) {
+        this.groupId = groupId;
     }
 }

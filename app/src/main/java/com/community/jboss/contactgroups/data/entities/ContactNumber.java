@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity(foreignKeys = @ForeignKey(
         entity = Contact.class,
         parentColumns = "uid",
-        childColumns = "contactID",
+        childColumns = "contactId",
         onDelete = ForeignKey.CASCADE
 ))
 public class ContactNumber {
@@ -26,16 +26,16 @@ public class ContactNumber {
     @NonNull
     private String number;
     @NonNull
-    private String contactID;
+    private String contactId;
 
     @Ignore
-    public ContactNumber(String number, String contactID) {
-        this(number, contactID, UUID.randomUUID().toString());
+    public ContactNumber(String number, String contactId) {
+        this(number, contactId, UUID.randomUUID().toString());
     }
 
-    public ContactNumber(@NonNull String number,@NonNull String contactID,@NonNull String uid) {
+    public ContactNumber(@NonNull String number,@NonNull String contactId,@NonNull String uid) {
         this.number = number;
-        this.contactID = contactID;
+        this.contactId = contactId;
         this.uid = uid;
     }
 
@@ -49,8 +49,8 @@ public class ContactNumber {
     }
 
     @NonNull
-    public String getContactID() {
-        return contactID;
+    public String getContactId() {
+        return contactId;
     }
 
     @NonNull
@@ -62,7 +62,7 @@ public class ContactNumber {
         this.uid = uid;
     }
 
-    public void setContactID(String contactID) {
-        this.contactID = contactID;
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
     }
 }

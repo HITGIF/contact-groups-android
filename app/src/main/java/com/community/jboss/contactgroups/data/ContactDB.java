@@ -24,11 +24,11 @@ import com.community.jboss.contactgroups.data.entities.Group;
 }, version = 1)
 public abstract class ContactDB extends RoomDatabase {
 
-    public abstract ContactDAO getContactDAO();
+    public abstract ContactDAO getContactDao();
 
-    public abstract ContactNumberDAO getContactNumberDAO();
+    public abstract ContactNumberDAO getContactNumberDao();
 
-    public abstract GroupDAO getGroupDAO();
+    public abstract GroupDAO getGroupDao();
 
-    public abstract ContactGroupDAO getContactGroupDAO();
+    public abstract ContactGroupDAO getContactGroupDao();
 }

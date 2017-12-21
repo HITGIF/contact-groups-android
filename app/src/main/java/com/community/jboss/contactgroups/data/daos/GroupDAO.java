@@ -9,16 +9,11 @@ import com.community.jboss.contactgroups.data.entities.Group;
 
 import java.util.List;
 
-/**
- * Created by carbonyl on 17-12-19.
- */
-
 @Dao
 public interface GroupDAO {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Group group);
 
     @Query("SELECT * FROM `group`")
-    List<Group> getGroupList();
+    List<Group> getGroups();
 }

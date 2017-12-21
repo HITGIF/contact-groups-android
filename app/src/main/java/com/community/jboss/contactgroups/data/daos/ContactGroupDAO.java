@@ -20,9 +20,9 @@ public interface ContactGroupDAO {
     @Insert
     void insert(ContactGroup contactGroup);
 
-    @Query("SELECT * FROM contact INNER JOIN contactgroup ON contact.uid = contactgroup.contactID WHERE contactgroup.groupID = :groupID")
-    List<Contact> getContactList(String groupID);
+    @Query("SELECT * FROM contact INNER JOIN contactgroup ON contact.uid = contactgroup.contactId WHERE contactgroup.groupId = :groupId")
+    List<Contact> getContactList(String groupId);
 
-    @Query("SELECT * FROM `group` INNER JOIN contactgroup ON `group`.uid = contactgroup.groupID WHERE contactgroup.contactID = :contactID")
-    List<Group> getGroupList(String contactID);
+    @Query("SELECT * FROM `group` INNER JOIN contactgroup ON `group`.uid = contactgroup.groupId WHERE contactgroup.contactId = :contactId")
+    List<Group> getGroupList(String contactId);
 }

@@ -10,13 +10,8 @@ import com.community.jboss.contactgroups.data.entities.ContactNumber;
 
 import java.util.List;
 
-/**
- * Created by carbonyl on 17-12-19.
- */
-
 @Dao
 public interface ContactNumberDAO {
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(ContactNumber contactNumber);
 
@@ -26,6 +21,6 @@ public interface ContactNumberDAO {
     @Query("SELECT * FROM contactnumber WHERE number = :number")
     ContactNumber getContactNumber(String number);
 
-    @Query("SELECT * FROM contactnumber WHERE contactID = :contactID")
-    List<ContactNumber> getContactNumberList(String contactID);
+    @Query("SELECT * FROM contactnumber WHERE contactId = :contactId")
+    List<ContactNumber> getContactNumbers(String contactId);
 }

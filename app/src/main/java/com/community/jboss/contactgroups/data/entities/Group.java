@@ -30,7 +30,7 @@ public class Group {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
@@ -39,8 +39,7 @@ public class Group {
         return uid;
     }
 
-    @NonNull
-    public void setUid(String uid) {
+    public void setUid(@NonNull String uid) {
         this.uid = uid;
     }
 }
