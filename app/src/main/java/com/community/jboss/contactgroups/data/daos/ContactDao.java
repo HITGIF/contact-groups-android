@@ -11,6 +11,10 @@ import com.community.jboss.contactgroups.data.entities.Contact;
 
 import java.util.List;
 
+/**
+ * Created by carbonyl on 21/12/2017.
+ */
+
 @Dao
 public interface ContactDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
@@ -25,6 +29,7 @@ public interface ContactDao {
     @Query("SELECT * FROM contact")
     List<Contact> getContacts();
 
-    @Query("SELECT * FROM contact WHERE id = :id")
-    Contact getContact(String id);
+    @Query("SELECT * FROM contact WHERE uid = :uid")
+    Contact getContact(String uid);
 }
+

@@ -7,25 +7,29 @@ import android.support.annotation.NonNull;
 
 import java.util.UUID;
 
+/**
+ * Created by carbonyl on 17-12-19.
+ */
+
 @Entity
 public class Contact {
+
     @PrimaryKey @NonNull
-    private final String id;
+    private String uid;
     private String name;
+
+    public Contact() {
+        this(null);
+    }
 
     @Ignore
     public Contact(String name) {
-        this(UUID.randomUUID().toString(), name);
+        this(name, UUID.randomUUID().toString());
     }
 
-    public Contact(@NonNull String id, String name) {
-        this.id = id;
+    private Contact(@NonNull String uid, String name) {
         this.name = name;
-    }
-
-    @NonNull
-    public String getId() {
-        return id;
+        this.uid = uid;
     }
 
     public String getName() {
@@ -34,5 +38,14 @@ public class Contact {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @NonNull
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(@NonNull String uid) {
+        this.uid = uid;
     }
 }

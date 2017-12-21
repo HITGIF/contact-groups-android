@@ -8,32 +8,35 @@ import android.support.annotation.NonNull;
 
 import java.util.UUID;
 
+/**
+ * Created by carbonyl on 17-12-19.
+ */
+
 @Entity(foreignKeys = @ForeignKey(
         entity = Contact.class,
-        parentColumns = "id",
+        parentColumns = "uid",
         childColumns = "contactId",
         onDelete = ForeignKey.CASCADE
 ))
 public class ContactNumber {
+
     @PrimaryKey
     @NonNull
-    private final String id;
-    @NonNull
-    private final String contactId;
+    private String uid;
     @NonNull
     private String number;
+    @NonNull
+    private String contactId;
 
     @Ignore
-    public ContactNumber(@NonNull String number, @NonNull String contactId) {
-        this(UUID.randomUUID().toString(), number, contactId);
+    public ContactNumber(String number, String contactId) {
+        this(number, contactId, UUID.randomUUID().toString());
     }
 
-    public ContactNumber(@NonNull String id,
-                         @NonNull String number,
-                         @NonNull String contactId) {
-        this.id = id;
+    public ContactNumber(@NonNull String number,@NonNull String contactId,@NonNull String uid) {
         this.number = number;
         this.contactId = contactId;
+        this.uid = uid;
     }
 
     @NonNull
@@ -51,7 +54,15 @@ public class ContactNumber {
     }
 
     @NonNull
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(@NonNull String uid) {
+        this.uid = uid;
+    }
+
+    public void setContactId(String contactId) {
+        this.contactId = contactId;
     }
 }

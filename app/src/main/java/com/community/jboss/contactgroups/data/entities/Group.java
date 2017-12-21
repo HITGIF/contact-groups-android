@@ -1,31 +1,31 @@
 package com.community.jboss.contactgroups.data.entities;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.util.UUID;
 
+/**
+ * Created by carbonyl on 17-12-19.
+ */
+
 @Entity
 public class Group {
-    @PrimaryKey
-    @NonNull
-    private final String id;
-    @NonNull
+
+    @PrimaryKey @NonNull
+    private String uid;
     private String name;
 
-    @Ignore
-    public Group(@NonNull String name) {
-        this(UUID.randomUUID().toString(), name);
+    public Group(String name) {
+        this(name, UUID.randomUUID().toString());
     }
 
-    public Group(@NonNull String id, @NonNull String name) {
-        this.id = id;
+    private Group(String name, @NonNull String uid) {
         this.name = name;
+        this.uid = uid;
     }
 
-    @NonNull
     public String getName() {
         return name;
     }
@@ -35,7 +35,11 @@ public class Group {
     }
 
     @NonNull
-    public String getId() {
-        return id;
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(@NonNull String uid) {
+        this.uid = uid;
     }
 }
